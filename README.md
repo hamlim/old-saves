@@ -1,6 +1,6 @@
-# Template Next.js App
+# Saves
 
-This repo acts as a template repo for some of my Next.js applications.
+An API and frontend for saving links on the web
 
 ## Getting Started:
 

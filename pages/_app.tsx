@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ThemeProvider } from '@matthamlin/component-library'
+import { ThemeProvider } from '@ds-pack/components'
 import Head from 'next/head'
 
 export default function App({ Component, pageProps }) {
