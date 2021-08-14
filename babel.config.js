@@ -13,7 +13,15 @@ module.exports = function (api) {
     ]
   }
   return {
-    presets: [cfg, '@babel/preset-react'],
+    presets: [
+      cfg,
+      [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+        },
+      ],
+    ],
     plugins: [
       [
         '@babel/plugin-transform-typescript',

@@ -1,6 +1,7 @@
-import * as React from 'react'
+import { Suspense } from 'react'
 import { Box, Text } from '@ds-pack/components'
 import { useCache } from '@matthamlin/simple-cache'
+import Header from '../components/Header'
 
 async function request() {
   let res = await fetch('/api/get')
@@ -12,10 +13,11 @@ let cache = new Map()
 export default function App() {
   return (
     <Box>
+      <Header />
       <Text>Hello, World!</Text>
-      <React.Suspense fallback="loading...">
+      <Suspense fallback="loading...">
         <List />
-      </React.Suspense>
+      </Suspense>
     </Box>
   )
 }
