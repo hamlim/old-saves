@@ -4,6 +4,8 @@ module.exports = withMDX({
   experimental: {
     reactRefresh: true,
     modern: true,
-    reactMode: 'concurrent',
+    reactRoot: 'concurrent',
   },
+  reactStrictMode: true,
+  webpack5: true,
 })
