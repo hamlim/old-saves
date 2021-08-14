@@ -38,8 +38,19 @@ function Fallback() {
   )
 }
 
+let simulateLoggedInUser = true
+
+let fakeUser = {
+  id: 0,
+  name: 'Matt',
+  email: 'matthewjameshamlin@gmail.com',
+}
+
 export default function App({ Component, pageProps }) {
-  let [state, dispatch] = useReducer(userReducer, undefined)
+  let [state, dispatch] = useReducer(
+    userReducer,
+    simulateLoggedInUser ? fakeUser : undefined,
+  )
   return (
     <ErrorBoundary fallback={<Fallback />}>
       <UserProvider user={state}>

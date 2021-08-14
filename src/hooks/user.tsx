@@ -1,8 +1,7 @@
 import { createContext, useContext, ReactNode } from 'react'
 
 export interface User {
-  loggedIn: boolean
-  userId: number
+  id: number
   name: string
   email: string
 }

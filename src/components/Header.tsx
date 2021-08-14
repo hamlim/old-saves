@@ -1,6 +1,7 @@
 import { Box, Heading, Text } from '@ds-pack/components'
 import Link from './Link'
 import { useRouter } from 'next/router'
+import { useUser } from '../hooks/user'
 
 function ActiveLink({ href, ...props }) {
   let router = useRouter()
@@ -11,8 +12,10 @@ function ActiveLink({ href, ...props }) {
 }
 
 export default function Header({ title = '' }) {
+  let user = useUser()
   return (
     <Box
+      is="header"
       p="$4"
       backgroundColor="$red-1"
       display="flex"
@@ -24,12 +27,18 @@ export default function Header({ title = '' }) {
         </Heading>
         {title ? <Text>{title}</Text> : null}
       </Box>
-      <Box>
-        <ActiveLink pr="$2" href="/save">
-          Save Link
-        </ActiveLink>
-        <ActiveLink href="/saves">View Saved Links</ActiveLink>
-      </Box>
+      {user ? (
+        <Box>
+          <ActiveLink pr="$2" href="/save">
+            Save Link
+          </ActiveLink>
+          <ActiveLink href="/saves">View Saved Links</ActiveLink>
+        </Box>
+      ) : (
+        <Box>
+          <ActiveLink href="/login">Login</ActiveLink>
+        </Box>
+      )}
     </Box>
   )
 }

@@ -1,32 +1,19 @@
-import { Suspense } from 'react'
-import { Box, Text } from '@ds-pack/components'
-import { useCache } from '@matthamlin/simple-cache'
+import { Box, Text, Heading } from '@ds-pack/components'
 import Header from '../components/Header'
-
-async function request() {
-  let res = await fetch('/api/get')
-  return await res.json()
-}
-
-let cache = new Map()
+import Main from '../components/Main'
 
 export default function App() {
   return (
-    <Box>
+    <Main>
       <Header />
-      <Text>Hello, World!</Text>
-      <Suspense fallback="loading...">
-        <List />
-      </Suspense>
-    </Box>
+      <Box is="section" p="$2">
+        <Heading textAlign="center" mt="$8" is="p" variant="h1">
+          Welcome to{' '}
+          <Text is="span" color="$red-4">
+            Saves ♥️
+          </Text>
+        </Heading>
+      </Box>
+    </Main>
   )
-}
-
-function List() {
-  let [res] = useCache(cache, 'get', request)
-  return res.map(({ fields, id }) => (
-    <Box forwardedAs="pre" key={id}>
-      {JSON.stringify(fields, null, 2)}
-    </Box>
-  ))
 }

@@ -1,7 +1,9 @@
+import Header from '../components/Header'
+import Main from '../components/Main'
+import Footer from '../components/Footer'
 import { Suspense } from 'react'
 import { Box, Text } from '@ds-pack/components'
 import { useCache } from '@matthamlin/simple-cache'
-import Header from '../components/Header'
 
 async function request() {
   let res = await fetch('/api/get')
@@ -10,14 +12,16 @@ async function request() {
 
 let cache = new Map()
 
-export default function Saves() {
+export default function Saves({ userDispatch }) {
   return (
-    <Box>
+    <Main footer={<Footer userDispatch={userDispatch} />}>
       <Header title="Saved Links" />
-      <Suspense fallback="loading...">
-        <List />
-      </Suspense>
-    </Box>
+      <Box is="section" p="$2">
+        <Suspense fallback="loading...">
+          <List />
+        </Suspense>
+      </Box>
+    </Main>
   )
 }
 

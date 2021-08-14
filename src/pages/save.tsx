@@ -1,12 +1,15 @@
-import { Suspense } from 'react'
 import Header from '../components/Header'
-import { Box, Text, Button } from '@ds-pack/components'
+import Main from '../components/Main'
+import Footer from '../components/Footer'
+import { Text, Box } from '@ds-pack/components'
 
-export default function Save() {
+export default function Save({ userDispatch }) {
   return (
-    <Box>
+    <Main footer={<Footer userDispatch={userDispatch} />}>
       <Header title="Save" />
-      <Text>Save!</Text>
-    </Box>
+      <Box is="section" p="$2">
+        <Text>Save!</Text>
+      </Box>
+    </Main>
   )
 }
